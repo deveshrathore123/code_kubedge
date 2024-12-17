@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Setup</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        button:focus {
+            outline: none;
+            border-color: #ff9d00;
+            background-color: #34495e;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose a Database Setup</h1>
+
+    <div class="button-container">
+        <!-- Redirect buttons for different database setups -->
+        <button onclick="window.location.href='database/in_mem.html'">In-Memory Database</button>
+        <button onclick="window.location.href='database/nosql_database.html'">NoSQL Database</button>
+        <button onclick="window.location.href='database/relational_database.html'">Relational Database</button>
+    </div>
+
+</body>
+</html>
 
