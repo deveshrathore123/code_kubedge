@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Static Hosting Configuration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      line-height: 1.5;
+      background-color: #242426;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-attachment: scroll;
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20path%20%7B%20fill%3A%20none%3B%20stroke%3A%20rgba(255,255,255,0.027)%3B%20stroke-width%3A%202.01px%3B%20stroke-linecap%3A%20round%3B%20stroke-linejoin%3A%20round%3B%20%7D%20%3C%2Fstyle%3E%20%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M424%2C331.8c0%2C12.5-6.7%2C24.1-17.5%2C30.3l-132%2C76.2c-10.8%2C6.3-24.2%2C6.3-35%2C0l-132-76.2%20C96.7%2C355.8%2C90%2C344.3%2C90%2C331.8V179.2c0-12.5%2C6.7-24.1%2C17.5-30.3l132-76.2c10.8-6.3%2C24.2-6.3%2C35%2C0l132%2C76.2%20c10.8%2C6.3%2C17.5%2C17.8%2C17.5%2C30.3V331.8z%20M238.5%2C73l-256%2C147.6%20M273.5%2C439l252.1-145.4%20M256%2C634.7V378.3c0-12.5%2C6.7-24.1-17.5%2C30.3%20l252.1-145.4%20M256-122.7v256.4c0%2C12.5-6.7%2C24.1-17.5%2C30.3%20l-256%2C147.6%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(16deg, #242426 0%, #212124 60%);
+      background-size: 318px, auto;
+      background-position: center, 0% 0%;
+      background-repeat: repeat, repeat;
+    }
+
+    /* Centering the form and layout */
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 0 0 2.34375rem 0;
+    }
+
+    #main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    #main > .inner {
+      padding: 3.125rem 0;
+      width: 80%; /* Increased the width to make the page wider */
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 0 auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    h1, h2, h3 {
+      color: #fff;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      color: #f0f0f0;
+      font-weight: 400;
+    }
+
+    /* Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    label {
+      font-size: 1.125rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    input, textarea, select {
+      padding: 1rem;
+      font-size: 1rem;
+      color: #333;
+      background-color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    button {
+      padding: 1rem;
+      font-size: 1.125rem;
+      color: #fff;
+      background-color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+
+    /* Style for textarea */
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    /* For conditional fields visibility */
+    .conditional-section {
+      display: none;
+    }
+    
+    .conditional-section.active {
+      display: block;
+    }
+
+    .deployment-methods input[type="radio"] {
+      margin-right: 0.5rem;
+    }
+
+    /* Adjust spacing */
+    .deployment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Style for the checkbox (Enable REST API) to make it bigger */
+    #rest_api {
+      transform: scale(1.5); /* Makes the checkbox larger */
+      margin-right: 1rem;
+    }
+
+    /* Styling the select button */
+    select {
+      font-size: 1.25rem; /* Makes the select button bigger */
+      padding: 1rem;
+      border: 2px solid #444; /* Straight and stylish border */
+      border-radius: 8px;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    select:hover {
+      border-color: #ff9b00; /* Change border color on hover */
+    }
+  </style>
+
+  <script>
+    function toggleConditionalFields() {
+      const deploymentMethod = document.querySelector('input[name="deployment_method"]:checked').value;
+      const githubSection = document.getElementById('github-url-section');
+      const zipSection = document.getElementById('zip-upload-section');
+
+      if (deploymentMethod === 'github') {
+        githubSection.classList.add('active');
+        zipSection.classList.remove('active');
+      } else {
+        githubSection.classList.remove('active');
+        zipSection.classList.add('active');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
+        <h1>Dynamic Static Hosting Configuration</h1>
+        <p>Provide the following details to configure your dynamic static hosting.</p>
+
+        <form action="./submit.html" method="GET">
+          <label for="title">Deployment Title</label>
+          <input type="text" id="title" name="title" placeholder="Enter deployment title" required>
+
+          <label for="programming_language">Programming Language/Framework</label>
+          <select id="programming_language" name="programming_language" required>
+            <option value="nodejs">Node.js (JavaScript)</option>
+            <option value="python_django">Python/Django</option>
+            <option value="ruby_rails">Ruby on Rails</option>
+            <option value="php_laravel">PHP/Laravel</option>
+            <option value="java_spring">Java/Spring Boot</option>
+            <option value="go">Go</option>
+            <option value="dotnet">.NET (C#)</option>
+            <option value="other">Other (Specify)</option>
+          </select>
+
+          <label for="database">Database Type</label>
+          <select id="database" name="database" required>
+            <option value="sql">SQL (MySQL, PostgreSQL)</option>
+            <option value="nosql">NoSQL (MongoDB, Redis)</option>
+            <option value="firebase">Firebase</option>
+            <option value="cassandra">Cassandra</option>
+            <option value="mariadb">MariaDB</option>
+            <option value="sqlite">SQLite</option>
+            <option value="none">None</option>
+          </select>
+
+          <label>API Configuration</label>
+          <input type="checkbox" id="rest_api" name="rest_api" value="yes">
+          <label for="rest_api">Enable REST API</label>
+
+          <input type="checkbox" id="graphql_api" name="graphql_api" value="yes">
+          <label for="graphql_api">Enable GraphQL API</label>
+
+          <label>API Authentication</label>
+          <select id="api_authentication" name="api_authentication">
+            <option value="none">None</option>
+            <option value="oauth">OAuth</option>
+            <option value="jwt">JWT</option>
+          </select>
+
+          <label>Choose Deployment Method</label>
+          <div class="deployment-methods">
+            <label>
+              <input type="radio" name="deployment_method" value="upload" onclick="toggleConditionalFields()" required>
+              Upload Code (ZIP)
+            </label>
+            <label>
+              <input type="radio" name="deployment_method" value="github" onclick="toggleConditionalFields()" required>
+              GitHub Repository URL
+            </label>
+          </div>
+
+          <div id="github-url-section" class="conditional-section">
+            <label for="github_url">GitHub Repository URL</label>
+            <input type="url" id="github_url" name="github_url" placeholder="Enter GitHub repository URL">
+          </div>
+
+          <div id="zip-upload-section" class="conditional-section">
+            <label for="code_upload">Code Upload (ZIP File)</label>
+            <input type="file" id="code_upload" name="code_upload">
+          </div>
+
+          <label for="replicas">Replicas</label>
+          <input type="number" id="replicas" name="replicas" placeholder="Number of replicas" required>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
