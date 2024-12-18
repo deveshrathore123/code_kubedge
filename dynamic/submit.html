@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submitted Data</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      line-height: 1.5;
+      background-color: #242426;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-attachment: scroll;
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20path%20%7B%20fill%3A%20none%3B%20stroke%3A%20rgba(255,255,255,0.027)%3B%20stroke-width%3A%202.01px%3B%20stroke-linecap%3A%20round%3B%20stroke-linejoin%3A%20round%3B%20%7D%20%3C%2Fstyle%3E%20%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M424%2C331.8c0%2C12.5-6.7%2C24.1-17.5%2C30.3l-132%2C76.2c-10.8%2C6.3-24.2%2C6.3-35%2C0l-132-76.2%20C96.7%2C355.8%2C90%2C344.3%2C90%2C331.8V179.2c0-12.5%2C6.7-24.1%2C17.5-30.3l132-76.2c10.8-6.3%2C24.2-6.3%2C35%2C0l132%2C76.2%20c10.8%2C6.3%2C17.5%2C17.8%2C17.5%2C30.3V331.8z%20M238.5%2C73l-256%2C147.6%20M273.5%2C439l252.1-145.4%20M256%2C634.7V378.3c0-12.5%2C6.7-24.1-17.5%2C30.3%20l252.1-145.4%20M256-122.7v256.4c0%2C12.5-6.7%2C24.1-17.5%2C30.3%20l-256%2C147.6%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(16deg, #242426 0%, #212124 60%);
+      background-size: 318px, auto;
+      background-position: center, 0% 0%;
+      background-repeat: repeat, repeat;
+    }
+
+    /* Centering the content and layout */
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 0 0 2.34375rem 0;
+    }
+
+    #main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    #main > .inner {
+      padding: 3.125rem 0;
+      width: 80%; /* Wider page */
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 0 auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    h1, h2, h3 {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      color: #f0f0f0;
+      font-weight: 400;
+    }
+
+    .data {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .data p {
+      margin: 15px 0;
+    }
+
+    /* Styling for the response data */
+    .data span {
+      color: #ff9b00;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
+        <h1>Submitted Data</h1>
+        <p>The following data was submitted:</p>
+
+        <div class="data">
+          <p><strong>Deployment Title:</strong> <span id="title"></span></p>
+          <p><strong>Programming Language/Framework:</strong> <span id="programming_language"></span></p>
+          <p><strong>Database Type:</strong> <span id="database"></span></p>
+          <p><strong>Enable REST API:</strong> <span id="rest_api"></span></p>
+          <p><strong>Enable GraphQL API:</strong> <span id="graphql_api"></span></p>
+          <p><strong>API Authentication:</strong> <span id="api_authentication"></span></p>
+          <p><strong>Deployment Method:</strong> <span id="deployment_method"></span></p>
+          <p><strong>Replicas:</strong> <span id="replicas"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fetch query parameters from URL
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById('title').innerText = params.get('title');
+    document.getElementById('programming_language').innerText = params.get('programming_language');
+    document.getElementById('database').innerText = params.get('database');
+    document.getElementById('rest_api').innerText = params.get('rest_api') ? 'Yes' : 'No';
+    document.getElementById('graphql_api').innerText = params.get('graphql_api') ? 'Yes' : 'No';
+    document.getElementById('api_authentication').innerText = params.get('api_authentication');
+    document.getElementById('deployment_method').innerText = params.get('deployment_method');
+    document.getElementById('replicas').innerText = params.get('replicas');
+  </script>
+</body>
+
+</html>
