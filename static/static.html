@@ -1,219 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags for SEO and Social Media -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light only" />
-    <meta name="description" content="Web hosting deployment tool using Docker and Docker Compose." />
-    <meta property="og:site_name" content="Web Hosting Tool" />
-    <meta property="og:title" content="Deploy Your Web App" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Deploy your web app with ease using our Docker-based hosting tool." />
-    <meta property="og:image" content="https://database1.carrd.co/assets/images/card.jpg?v=f310e33d" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="800" />
-    <meta property="og:url" content="https://database1.carrd.co" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://database1.carrd.co" />
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?display=swap&family=Gloock:ital,wght@0,400;1,400&family=Inter:ital,wght@0,500;1,500" rel="stylesheet" type="text/css" />
-    
-    <!-- Title of the Page -->
-    <title>Deploy Your Web App - Hosting Tool</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment Form</title>
 
-    <!-- Styles for the Form -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    body {
+      line-height: 1;
+      background-color: #242426;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-attachment: scroll;
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20path%20%7B%20fill%3A%20none%3B%20stroke%3A%20rgba(255,255,255,0.027)%3B%20stroke-width%3A%202.01px%3B%20stroke-linecap%3A%20round%3B%20stroke-linejoin%3A%20round%3B%20%7D%20%3C%2Fstyle%3E%20%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M424%2C331.8c0%2C12.5-6.7%2C24.1-17.5%2C30.3l-132%2C76.2c-10.8%2C6.3-24.2%2C6.3-35%2C0l-132-76.2%20C96.7%2C355.8%2C90%2C344.3%2C90%2C331.8V179.2c0-12.5%2C6.7-24.1%2C17.5-30.3l132-76.2c10.8-6.3%2C24.2-6.3%2C35%2C0l132%2C76.2%20c10.8%2C6.3%2C17.5%2C17.8%2C17.5%2C30.3V331.8z%20M238.5%2C73l-256%2C147.6%20M273.5%2C439l252.1-145.4%20M256%2C634.7V378.3c0-12.5%2C6.7-24.1-17.5%2C30.3%20l252.1-145.4%20M256-122.7v256.4c0%2C12.5-6.7%2C24.1-17.5%2C30.3%20l-256%2C147.6%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(16deg, #242426 0%, #212124 60%);
+      background-size: 318px, auto;
+      background-position: center, 0% 0%;
+      background-repeat: repeat, repeat;
+    }
 
-        h1 {
-            font-family: 'Gloock', serif;
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
-        }
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 0 0 2.34375rem 0;
+    }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    #main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      text-align: center;
+      z-index: 1;
+      background-color: transparent;
+    }
 
-        label {
-            font-weight: bold;
-            color: #444;
-            margin-top: 15px;
-        }
+    #main > .inner {
+      padding: 3.125rem 0;
+      width: 60rem;
+      max-width: 100%;
+      border-radius: 8px;
+      z-index: 1;
+      margin: 0 auto;
+    }
 
-        input[type="text"], input[type="number"], input[type="url"], input[type="file"], input[type="radio"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
+    h1, h2, h3 {
+      color: #fff;
+      text-align: center;
+    }
 
-        button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      color: #f0f0f0;
+    }
 
-        button:hover {
-            background-color: #4cae4c;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 8px;
+    }
 
-        .form-section {
-            margin-bottom: 20px;
-        }
+    label {
+      font-size: 1.125rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
 
-        .section-header {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
+    input, textarea, select {
+      padding: 1rem;
+      font-size: 1rem;
+      color: #333;
+      background-color: #fff;
+      border: none;
+      border-radius: 8px;
+    }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+    button {
+      padding: 1rem;
+      font-size: 1.125rem;
+      color: #fff;
+      background-color: #3f9d9b;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        .input-group label {
-            margin-bottom: 5px;
-        }
+    button:hover {
+      background-color: #347d7a;
+    }
 
-        .radio-group {
-            display: flex;
-            justify-content: space-between;
-        }
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
 
-        .radio-group label {
-            font-weight: normal;
-            margin-left: 10px;
-        }
+    .conditional-section {
+      display: none;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
+    .conditional-section.active {
+      display: block;
+    }
+  </style>
 
-            button {
-                font-size: 14px;
-            }
-        }
-    </style>
+  <script>
+    function toggleConditionalFields() {
+      const deploymentMethod = document.querySelector('input[name="deployment_method"]:checked').value;
+      const githubSection = document.getElementById('github-url-section');
+      const zipSection = document.getElementById('zip-upload-section');
+
+      if (deploymentMethod === 'github') {
+        githubSection.classList.add('active');
+        zipSection.classList.remove('active');
+      } else {
+        githubSection.classList.remove('active');
+        zipSection.classList.add('active');
+      }
+    }
+  </script>
 </head>
+
 <body>
-    <h1>Deploy Your Web App</h1>
-    <div class="container">
-        <form method="post" enctype="multipart/form-data">
-            <!-- Deployment Title -->
-            <div class="form-section">
-                <label for="title">Deployment Title:</label>
-                <input type="text" id="title" name="title" required>
-            </div>
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
+        <h1>Deployment Details</h1>
+        <p>Provide the following details to deploy your application.</p>
 
-            <!-- Image Name -->
-            <div class="form-section">
-                <label for="image_name">Image Name:</label>
-                <input type="text" id="image_name" name="image_name" required>
-            </div>
+        <!-- Deployment Form -->
+        <form action="/submit" method="POST">
+          
+          <!-- Deployment Title -->
+          <label for="title">Deployment Title</label>
+          <input type="text" id="title" name="title" placeholder="Enter deployment title" required>
+          
+          <!-- Image Name -->
+          <label for="image_name">Image Name</label>
+          <input type="text" id="image_name" name="image_name" placeholder="Enter Docker image name" required>
 
-            <!-- Container Name -->
-            <div class="form-section">
-                <label for="container_name">Container Name:</label>
-                <input type="text" id="container_name" name="container_name" required>
-            </div>
+          <!-- Container Name -->
+          <label for="container_name">Container Name</label>
+          <input type="text" id="container_name" name="container_name" placeholder="Enter container name" required>
 
-            <!-- Replicas -->
-            <div class="form-section">
-                <label for="replicas">Replicas (number of containers):</label>
-                <input type="number" id="replicas" name="replicas" min="1" max="10" value="1" required>
-            </div>
+          <!-- Replicas -->
+          <label for="replicas">Replicas</label>
+          <input type="number" id="replicas" name="replicas" placeholder="Number of replicas" required>
 
-            <!-- Port Mapping -->
-            <div class="form-section">
-                <label for="port_mapping">Port Mapping (e.g., 8080:80):</label>
-                <input type="text" id="port_mapping" name="port_mapping">
-            </div>
+          <!-- Port Mapping -->
+          <label for="port_mapping">Port Mapping</label>
+          <input type="text" id="port_mapping" name="port_mapping" placeholder="Enter port mapping (e.g., 8080:80)" required>
 
-            <!-- Deployment Method -->
-            <div class="form-section">
-                <label class="section-header">Select Deployment Method:</label>
-                <div class="radio-group">
-                    <div>
-                        <input type="radio" id="upload" name="deployment_method" value="upload" required>
-                        <label for="upload">Upload Code</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="github" name="deployment_method" value="github">
-                        <label for="github">GitHub Repository</label>
-                    </div>
-                </div>
-            </div>
+          <!-- Environment Variables -->
+          <label for="env_vars">Environment Variables (Optional)</label>
+          <input type="text" id="env_vars" name="env_vars" placeholder="Enter environment variables (e.g., DB_HOST=localhost)">
 
-            <!-- GitHub URL (Visible if GitHub is selected) -->
-            <div id="github_url_field" style="display:none;">
-                <label for="github_url">GitHub Repository URL:</label>
-                <input type="url" id="github_url" name="github_url">
-            </div>
+          <!-- Docker Compose File -->
+          <label for="docker_compose_file">Docker Compose File (Optional)</label>
+          <input type="file" id="docker_compose_file" name="docker_compose_file">
 
-            <!-- File Upload (Visible if Upload is selected) -->
-            <div id="upload_field" style="display:none;">
-                <label for="code_upload">Upload ZIP/Code Files:</label>
-                <input type="file" id="code_upload" name="code_upload">
-            </div>
+          <!-- Deployment Method -->
+          <label>Deployment Method</label>
+          <div>
+            <label>
+              <input type="radio" name="deployment_method" value="upload" onclick="toggleConditionalFields()" required>
+              Upload ZIP/Code Files
+            </label>
+            <label>
+              <input type="radio" name="deployment_method" value="github" onclick="toggleConditionalFields()" required>
+              Provide GitHub Repository URL
+            </label>
+          </div>
 
-            <!-- Docker Compose File Upload -->
-            <div class="form-section">
-                <label for="docker_compose_file">Upload Docker Compose File (Optional):</label>
-                <input type="file" id="docker_compose_file" name="docker_compose_file">
-            </div>
+          <!-- GitHub URL Section -->
+          <div id="github-url-section" class="conditional-section">
+            <label for="github_url">GitHub Repository URL</label>
+            <input type="url" id="github_url" name="github_url" placeholder="Enter GitHub repository URL">
+          </div>
 
-            <!-- Custom Configuration File -->
-            <div class="form-section">
-                <label for="custom_config_file">Upload Custom Config File (Optional):</label>
-                <input type="file" id="custom_config_file" name="custom_config_file">
-            </div>
+          <!-- ZIP Upload Section -->
+          <div id="zip-upload-section" class="conditional-section">
+            <label for="code_upload">Code Upload (ZIP File)</label>
+            <input type="file" id="code_upload" name="code_upload">
+          </div>
 
-            <!-- Submit -->
-            <button type="submit">Deploy</button>
+          <!-- Deployment Environment -->
+          <label for="deployment_env">Deployment Environment (Optional)</label>
+          <input type="text" id="deployment_env" name="deployment_env" placeholder="Enter environment (e.g., production, staging)">
+
+          <!-- Custom Configuration File -->
+          <label for="custom_config_file">Custom Configuration File (Optional)</label>
+          <input type="file" id="custom_config_file" name="custom_config_file">
+
+          <button type="submit">Submit</button>
         </form>
+      </div>
     </div>
-
-    <script>
-        // Show/hide fields based on deployment method
-        const deploymentMethodRadios = document.querySelectorAll('input[name="deployment_method"]');
-        deploymentMethodRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'github') {
-                    document.getElementById('github_url_field').style.display = 'block';
-                    document.getElementById('upload_field').style.display = 'none';
-                } else if (this.value === 'upload') {
-                    document.getElementById('upload_field').style.display = 'block';
-                    document.getElementById('github_url_field').style.display = 'none';
-                }
-            });
-        });
-    </script>
+  </div>
 </body>
 </html>
