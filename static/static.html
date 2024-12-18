@@ -1,100 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="description" content="Web hosting deployment tool using Docker and Docker Compose." />
+    <meta property="og:site_name" content="Web Hosting Tool" />
+    <meta property="og:title" content="Deploy Your Web App" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Deploy your web app with ease using our Docker-based hosting tool." />
+    <meta property="og:image" content="https://database1.carrd.co/assets/images/card.jpg?v=f310e33d" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:url" content="https://database1.carrd.co" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://database1.carrd.co" />
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Gloock:ital,wght@0,400;1,400&family=Inter:ital,wght@0,500;1,500" rel="stylesheet" type="text/css" />
+    <title>Deploy Your Web App - Hosting Tool</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://example.com/your-background-image.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0;
         }
-        .form-container {
-            background-color: rgba(0, 0, 0, 0.7); /* semi-transparent background */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 100%;
-        }
+
         h1 {
+            font-family: 'Gloock', serif;
             text-align: center;
-            color: #ffcc00;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            margin-top: 15px;
+        }
+
+        input[type="text"], input[type="number"], input[type="url"], input[type="file"], input[type="radio"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .form-section {
             margin-bottom: 20px;
         }
-        label {
-            display: block;
-            margin: 8px 0;
-            font-size: 16px;
+
+        .section-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
         }
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="password"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
+
+        .input-group {
             margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
         }
-        button {
-            background-color: #ffcc00;
-            color: black;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+
+        .input-group label {
+            margin-bottom: 5px;
         }
-        button:hover {
-            background-color: #ff9900;
+
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .radio-group label {
+            font-weight: normal;
+            margin-left: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
+    <h1>Deploy Your Web App</h1>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            <!-- Deployment Title -->
+            <div class="form-section">
+                <label for="title">Deployment Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
 
-    <div class="form-container">
-        <h1>User Registration</h1>
-        <form action="/submit-form" method="POST">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            <!-- Image Name -->
+            <div class="form-section">
+                <label for="image_name">Image Name:</label>
+                <input type="text" id="image_name" name="image_name" required>
+            </div>
 
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            <!-- Container Name -->
+            <div class="form-section">
+                <label for="container_name">Container Name:</label>
+                <input type="text" id="container_name" name="container_name" required>
+            </div>
 
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <!-- Replicas -->
+            <div class="form-section">
+                <label for="replicas">Replicas (number of containers):</label>
+                <input type="number" id="replicas" name="replicas" min="1" max="10" value="1" required>
+            </div>
 
-            <label for="password">Create a Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter a password" required>
+            <!-- Port Mapping -->
+            <div class="form-section">
+                <label for="port_mapping">Port Mapping (e.g., 8080:80):</label>
+                <input type="text" id="port_mapping" name="port_mapping">
+            </div>
 
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
-                <option value="">Select your country</option>
-                <option value="USA">USA</option>
-                <option value="Canada">Canada</option>
-                <option value="UK">UK</option>
-                <option value="Australia">Australia</option>
-            </select>
+            <!-- Deployment Method -->
+            <div class="form-section">
+                <label class="section-header">Select Deployment Method:</label>
+                <div class="radio-group">
+                    <div>
+                        <input type="radio" id="upload" name="deployment_method" value="upload" required>
+                        <label for="upload">Upload Code</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="github" name="deployment_method" value="github">
+                        <label for="github">GitHub Repository</label>
+                    </div>
+                </div>
+            </div>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Enter your message (optional)"></textarea>
+            <!-- GitHub URL (Visible if GitHub is selected) -->
+            <div id="github_url_field" style="display:none;">
+                <label for="github_url">GitHub Repository URL:</label>
+                <input type="url" id="github_url" name="github_url">
+            </div>
 
-            <button type="submit">Submit</button>
+            <!-- File Upload (Visible if Upload is selected) -->
+            <div id="upload_field" style="display:none;">
+                <label for="code_upload">Upload ZIP/Code Files:</label>
+                <input type="file" id="code_upload" name="code_upload">
+            </div>
+
+            <!-- Docker Compose File Upload -->
+            <div class="form-section">
+                <label for="docker_compose_file">Upload Docker Compose File (Optional):</label>
+                <input type="file" id="docker_compose_file" name="docker_compose_file">
+            </div>
+
+            <!-- Custom Configuration File -->
+            <div class="form-section">
+                <label for="custom_config_file">Upload Custom Config File (Optional):</label>
+                <input type="file" id="custom_config_file" name="custom_config_file">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit">Deploy</button>
         </form>
     </div>
 
+    <script>
+        // Show/hide fields based on deployment method
+        const deploymentMethodRadios = document.querySelectorAll('input[name="deployment_method"]');
+        deploymentMethodRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'github') {
+                    document.getElementById('github_url_field').style.display = 'block';
+                    document.getElementById('upload_field').style.display = 'none';
+                } else if (this.value === 'upload') {
+                    document.getElementById('upload_field').style.display = 'block';
+                    document.getElementById('github_url_field').style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
