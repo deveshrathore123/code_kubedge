@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deployment Form</title>
-
-  <!-- Link to Google Fonts for better typography -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
+    /* Styling remains the same */
     body {
       line-height: 1;
       background-color: #242426;
@@ -115,10 +113,38 @@
       min-height: 150px;
     }
 
+    /* Styling for the deployment method options */
+    .deployment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .deployment-methods label {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #333;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deployment-methods input {
+      margin-right: 0.5rem;
+    }
+
+    .deployment-methods label:hover {
+      background-color: #444;
+    }
+
     .conditional-section {
       display: none;
     }
-
+    
     .conditional-section.active {
       display: block;
     }
@@ -149,39 +175,27 @@
         <p>Provide the following details to deploy your application.</p>
 
         <!-- Deployment Form -->
-        <form action="./submit.html" method="POST">
-          
-          <!-- Deployment Title -->
+        <form action="./submit.html" method="GET">
           <label for="title">Deployment Title</label>
           <input type="text" id="title" name="title" placeholder="Enter deployment title" required>
-          
-          <!-- Image Name -->
+
           <label for="image_name">Image Name</label>
           <input type="text" id="image_name" name="image_name" placeholder="Enter Docker image name" required>
 
-          <!-- Container Name -->
           <label for="container_name">Container Name</label>
           <input type="text" id="container_name" name="container_name" placeholder="Enter container name" required>
 
-          <!-- Replicas -->
           <label for="replicas">Replicas</label>
           <input type="number" id="replicas" name="replicas" placeholder="Number of replicas" required>
 
-          <!-- Port Mapping -->
           <label for="port_mapping">Port Mapping</label>
           <input type="text" id="port_mapping" name="port_mapping" placeholder="Enter port mapping (e.g., 8080:80)" required>
 
-          <!-- Environment Variables -->
           <label for="env_vars">Environment Variables (Optional)</label>
           <input type="text" id="env_vars" name="env_vars" placeholder="Enter environment variables (e.g., DB_HOST=localhost)">
 
-          <!-- Docker Compose File -->
-          <label for="docker_compose_file">Docker Compose File (Optional)</label>
-          <input type="file" id="docker_compose_file" name="docker_compose_file">
-
-          <!-- Deployment Method -->
           <label>Deployment Method</label>
-          <div>
+          <div class="deployment-methods">
             <label>
               <input type="radio" name="deployment_method" value="upload" onclick="toggleConditionalFields()" required>
               Upload ZIP/Code Files
@@ -192,25 +206,15 @@
             </label>
           </div>
 
-          <!-- GitHub URL Section -->
           <div id="github-url-section" class="conditional-section">
             <label for="github_url">GitHub Repository URL</label>
             <input type="url" id="github_url" name="github_url" placeholder="Enter GitHub repository URL">
           </div>
 
-          <!-- ZIP Upload Section -->
           <div id="zip-upload-section" class="conditional-section">
             <label for="code_upload">Code Upload (ZIP File)</label>
             <input type="file" id="code_upload" name="code_upload">
           </div>
-
-          <!-- Deployment Environment -->
-          <label for="deployment_env">Deployment Environment (Optional)</label>
-          <input type="text" id="deployment_env" name="deployment_env" placeholder="Enter environment (e.g., production, staging)">
-
-          <!-- Custom Configuration File -->
-          <label for="custom_config_file">Custom Configuration File (Optional)</label>
-          <input type="file" id="custom_config_file" name="custom_config_file">
 
           <button type="submit">Submit</button>
         </form>
