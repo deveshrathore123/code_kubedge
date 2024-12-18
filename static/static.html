@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deployment Form</title>
 
+  <!-- Link to Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       line-height: 1;
       background-color: #242426;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       background-attachment: scroll;
@@ -45,17 +48,21 @@
       border-radius: 8px;
       z-index: 1;
       margin: 0 auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
     }
 
     h1, h2, h3 {
       color: #fff;
       text-align: center;
+      font-size: 2.5rem;
+      font-weight: 600;
     }
 
     p {
       font-size: 1.125rem;
       line-height: 1.5;
       color: #f0f0f0;
+      font-weight: 400;
     }
 
     form {
@@ -73,6 +80,7 @@
       color: #fff;
       margin-bottom: 0.5rem;
       text-align: left;
+      font-weight: 500;
     }
 
     input, textarea, select {
@@ -82,21 +90,24 @@
       background-color: #fff;
       border: none;
       border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
     }
 
     button {
       padding: 1rem;
       font-size: 1.125rem;
       color: #fff;
-      background-color: #3f9d9b;
+      background-color: #000;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
     button:hover {
-      background-color: #347d7a;
+      background-color: #444;
+      transform: scale(1.05);
     }
 
     textarea {
@@ -138,7 +149,7 @@
         <p>Provide the following details to deploy your application.</p>
 
         <!-- Deployment Form -->
-        <form action="/submit" method="POST">
+        <form action="./submit.html" method="POST">
           
           <!-- Deployment Title -->
           <label for="title">Deployment Title</label>
